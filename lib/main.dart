@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_list/screens/landing.dart';
+import 'package:simple_shopping_list/screens/product_detail.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,10 +11,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hello World!'),
+          child: LandingListView(),
         ),
       ),
     );
