@@ -3,6 +3,7 @@ import 'package:simple_shopping_list/models/product.dart';
 
 class RepositoryData implements Repository {
   List<Product> _products = [];
+
   RepositoryData() {
     _products.add(Product(
         name: 'Hemd',

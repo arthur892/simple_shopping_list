@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_list/data/cart.dart';
 import 'package:simple_shopping_list/models/product.dart';
 
-class ProductDetail extends StatelessWidget {
+class ProductScreen extends StatelessWidget {
   final Product product;
 
-  const ProductDetail({super.key, required this.product});
+  const ProductScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,15 @@ class ProductDetail extends StatelessWidget {
           children: [
             Text(product.name),
             Text(product.description),
-            Text(product.price.toStringAsFixed(2))
+            Text(product.price.toStringAsFixed(2)),
+            ElevatedButton(
+                onPressed: () {
+                  Cart().addToCart(product);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content:
+                          Text("${product.name} zum Warenkorb hinzugefügt")));
+                },
+                child: const Text("Add to Cart"))
           ],
         ),
       ),

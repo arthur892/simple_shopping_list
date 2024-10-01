@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_list/data/cart.dart';
 import 'package:simple_shopping_list/data/repository_data.dart';
+import 'package:simple_shopping_list/screens/cart.dart';
 import 'package:simple_shopping_list/screens/product_detail.dart';
 
 class LandingListView extends StatelessWidget {
-  RepositoryData data = RepositoryData();
+  final RepositoryData data = RepositoryData();
+  final Cart customerCart = Cart();
 
   LandingListView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Appbar Landing"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("Appbar Landing"),
+      // ),
       body: ListView.builder(
         padding: EdgeInsets.all(8),
         itemCount: data.getAllProducts().length,
@@ -22,17 +25,19 @@ class LandingListView extends StatelessWidget {
             child: ProductWidget(product: product),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ProductDetail(
+                return ProductScreen(
                   product: product,
                 );
               }));
             },
           );
-          // return ProductWidget(
-          //   product: product,
-          // );
         },
       ),
+      drawer: new Drawer(),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => CartScreen()));
+      }),
     );
   }
 }
