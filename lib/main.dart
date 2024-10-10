@@ -16,7 +16,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: "MainApp",
-      home: myHomePage(),
+      home: MyHomePage(),
     );
   }
 
@@ -80,14 +80,14 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class myHomePage extends StatefulWidget {
-  const myHomePage({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<myHomePage> createState() => _myHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _myHomePageState extends State<myHomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static List<Widget> _widgets = [ProductsListView(), CartScreen()];
   void _onItemTapped(int index) {
@@ -100,7 +100,7 @@ class _myHomePageState extends State<myHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("myHomePageState"),
+        title: const Text("myHomePageState"),
       ),
       body: _widgets[_selectedIndex],
       drawer: Drawer(
